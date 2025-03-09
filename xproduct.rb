@@ -5,24 +5,28 @@
 class Xproduct < Formula
   desc ""
   homepage "https://github.com/seedpower/xproduct"
-  version "1.0.15"
+  version "1.0.16"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.15/xproduct_1.0.15_darwin_amd64.tar.gz"
-    sha256 "67ecca9d61394679a62f6c004edfd471ee30a983afbc42545a5a9f98e9d6ab96"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.16/xproduct_1.0.16_darwin_amd64.tar.gz"
+    sha256 "c2dfe53852d2edacabde43ed6e6237d48a99a4e35217d45e35cc233b73559e85"
 
     def install
       bin.install "xproduct"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.15/xproduct_1.0.15_darwin_arm64.tar.gz"
-    sha256 "c16ba20c83e96a736f92fdab7d1dcad26bea9dd737698df7ec7a2decff030c83"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.16/xproduct_1.0.16_darwin_arm64.tar.gz"
+    sha256 "5e3d710d2277904b8e22b7f863936319f18726520d4cf71d42c6b9b0b77d59a9"
 
     def install
       bin.install "xproduct"
     end
+  end
+
+  def post_install
+    system "brew", "services", "start", name
   end
 
   service do
