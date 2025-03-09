@@ -5,20 +5,20 @@
 class Xproduct < Formula
   desc ""
   homepage "https://github.com/seedpower/xproduct"
-  version "1.0.13"
+  version "1.0.14"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.13/xproduct_1.0.13_darwin_amd64.tar.gz"
-    sha256 "7e9f973e86075b4a14b1368f15e27b3f17c0cc6f40b36f69d296a9ecc723fecc"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.14/xproduct_1.0.14_darwin_amd64.tar.gz"
+    sha256 "a0086027ae7447fdc633ccf684ce43ba9b0e04b176798d0487cb86023a4dc8a1"
 
     def install
       bin.install "xproduct"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.13/xproduct_1.0.13_darwin_arm64.tar.gz"
-    sha256 "f63ce0f611dc8a9eee57b65a53c2f49bf745ba8e11190c2a63b150df45deca5e"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.14/xproduct_1.0.14_darwin_arm64.tar.gz"
+    sha256 "143198148bdb0d3a73c99d266242eaa31c0639493df921edf4c6a1741e99b1af"
 
     def install
       bin.install "xproduct"
@@ -27,8 +27,9 @@ class Xproduct < Formula
 
   service do
     run [bin/"xproduct"]
-    environment({
+    env({
       "MYAPP_ENVIRONMENT": "production",
+      DEBUG: "true"
     })
     keep_alive true
     error_log_path var/"log/xproduct.log"
