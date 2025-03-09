@@ -5,20 +5,20 @@
 class Xproduct < Formula
   desc ""
   homepage "https://github.com/seedpower/xproduct"
-  version "1.0.16"
+  version "1.0.17"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.16/xproduct_1.0.16_darwin_amd64.tar.gz"
-    sha256 "c2dfe53852d2edacabde43ed6e6237d48a99a4e35217d45e35cc233b73559e85"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.17/xproduct_1.0.17_darwin_amd64.tar.gz"
+    sha256 "cb024acc0f1366912db23d40b1bc213eede3b58c4c56b0253d69cc8862a777c5"
 
     def install
       bin.install "xproduct"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/seedpower/xproduct/releases/download/v1.0.16/xproduct_1.0.16_darwin_arm64.tar.gz"
-    sha256 "5e3d710d2277904b8e22b7f863936319f18726520d4cf71d42c6b9b0b77d59a9"
+    url "https://github.com/seedpower/xproduct/releases/download/v1.0.17/xproduct_1.0.17_darwin_arm64.tar.gz"
+    sha256 "e33e2fecd08dada3cc430f3e5ee6f646f45beb77614d6bac6dbd01f8c971a113"
 
     def install
       bin.install "xproduct"
@@ -26,7 +26,7 @@ class Xproduct < Formula
   end
 
   def post_install
-    system "brew", "services", "start", name
+    ohai "To start the service, run: brew services start #{name}"
   end
 
   service do
